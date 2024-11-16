@@ -6,7 +6,7 @@ perform CRUD operations on the required database depending upon the API request 
 The problem statement for the below application can be found in this pdf file. The same is placed in the extradocs folder.
 Some of the URIs in the problem statement may not entirely match the one's in the code.
 
-[Bank Management Web Application - Problem Statement PDF](extradocs/BankManagementSystem_Usecase.pdf)
+[Bank Management Web Application - Problem Statement PDF](extradocs/BankManagement_Usecase.pdf)
 
 Also attached the postman suite with all the endpoints configured along with test data.
 
