@@ -1,0 +1,256 @@
+{
+	"info": {
+		"_postman_id": "521c3f44-c0a0-4a74-b112-a0ec94f70d28",
+		"name": "Bank Management - Spring Boot",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "22928894"
+	},
+	"item": [
+		{
+			"name": "Public - Login",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"userName\":\"np3\",\r\n    \"password\":\"test123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "/public/auth/login",
+					"path": [
+						"public",
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Customer Account Balance",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "JWT",
+						"value": "{{CUSTOMER_JWT - NP3}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "/accounts/2/balance",
+					"path": [
+						"accounts",
+						"2",
+						"balance"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List Transaction History For an Account",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "JWT",
+						"value": "{{CUSTOMER_JWT - NP3}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "/accounts/1/transactions",
+					"path": [
+						"accounts",
+						"1",
+						"transactions"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "View Account Details With Caching",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "JWT",
+						"value": "{{CUSTOMER_JWT - NP3}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "/accounts/1",
+					"path": [
+						"accounts",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Customers Managed by specific manager",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "JWT",
+						"value": "{{MANAGER_JWT - NP1}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "/managers/1/customers",
+					"path": [
+						"managers",
+						"1",
+						"customers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List Employees Under a Manager",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "JWT",
+						"value": "{{MANAGER_JWT - NP1}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "/managers/1/employees",
+					"path": [
+						"managers",
+						"1",
+						"employees"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Admin Contact Information",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "JWT",
+						"value": "{{EMPLOYEE_JWT - NP}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "/admin/contact",
+					"path": [
+						"admin",
+						"contact"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Super Admin Contact Information",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "JWT",
+						"value": "{{ADMIN_JWT - NP2}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "/superAdmins/contact",
+					"path": [
+						"superAdmins",
+						"contact"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					"pm.request.url.protocol=\"http\"\r",
+					"pm.request.url.host=\"localhost\"\r",
+					"pm.request.url.port=\"8080\""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "ADMIN_JWT - NP2",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "EMPLOYEE_JWT - NP",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "CUSTOMER_JWT - NP3",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "MANAGER_JWT - NP1",
+			"value": "",
+			"type": "string"
+		}
+	]
+}
